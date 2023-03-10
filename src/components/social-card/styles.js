@@ -1,24 +1,18 @@
 import styled from 'styled-components';
 
-const StyledMain = styled.div`
-	position: absolute;
-	top: 180px;
-	width: 100%;
-`;
-
 const StyledCard = styled.div`
-	width: 85%;
+	width: 100%;
 	height: 250px;
-	margin-right: auto;
-	margin-left: auto;
-	border-top: 5px solid #178ff5;
+	border-top: 5px solid ${({ border }) => border};
 	border-radius: 0.5rem;
 	padding: 1rem;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	text-align: center;
-	background-color: #f1f3fa;
+	background-color: ${({ dark }) => (dark ? '#252B42' : '#f1f3fa')};
+	margin-bottom: 1rem;
+	color: ${({ dark }) => (dark ? 'white' : '#black')};
 `;
 
 const CardSocialInfo = styled.div`
@@ -39,16 +33,22 @@ const CardType = styled.p`
 const TodayContainer = styled.div`
 	display: flex;
 	align-items: center;
+
 	font-size: 0.9rem;
 	font-weight: bold;
 	gap: 0.4rem;
 	color: #1eb589;
+	padding-top: 1rem;
+`;
+
+const TodayText = styled.p`
+	color: ${({ color }) => color};
 `;
 export {
-	StyledMain,
 	StyledCard,
 	CardSocialInfo,
 	CardNumber,
 	CardType,
-	TodayContainer
+	TodayContainer,
+	TodayText
 };

@@ -2,53 +2,41 @@ import styled from 'styled-components';
 
 const StyledMain = styled.div`
 	position: absolute;
-	top: 180px;
+	top: 200px;
 	width: 100%;
+	@media screen and (min-width: 768px) {
+		top: 150px;
+	}
 `;
 
-const StyledCard = styled.div`
-	width: 85%;
-	height: 250px;
-	margin-right: auto;
-	margin-left: auto;
-	border-top: 5px solid #178ff5;
-	border-radius: 0.5rem;
-	padding: 1rem;
+const StyledCardContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	text-align: center;
-	background-color: #f1f3fa;
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	gap: 1rem;
+	@media screen and (min-width: 768px) {
+		flex-direction: row;
+	}
+`;
+const ViewTitle = styled.h2`
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	color: ${({ dark }) => (dark ? 'white' : '#63687d')};
 `;
 
-const CardSocialInfo = styled.div`
+const StyledViewContainer = styled.div`
 	display: flex;
-	align-items: center;
-	gap: 0.3rem;
+	flex-direction: column;
+	width: 85%;
+	margin-right: auto;
+	margin-left: auto;
+	gap: 1rem;
+	@media screen and (min-width: 768px) {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+	}
 `;
-
-const CardNumber = styled.p`
-	font-size: 3rem;
-	margin: 0;
-	font-weight: bold;
-`;
-const CardType = styled.p`
-	color: #63687d;
-`;
-
-const TodayContainer = styled.div`
-	display: flex;
-	align-items: center;
-	font-size: 0.9rem;
-	font-weight: bold;
-	gap: 0.4rem;
-	color: #1eb589;
-`;
-export {
-	StyledMain,
-	StyledCard,
-	CardSocialInfo,
-	CardNumber,
-	CardType,
-	TodayContainer
-};
+export { StyledMain, StyledCardContainer, StyledViewContainer, ViewTitle };

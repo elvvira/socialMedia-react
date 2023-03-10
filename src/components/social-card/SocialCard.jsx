@@ -3,23 +3,39 @@ import {
 	CardNumber,
 	CardSocialInfo,
 	CardType,
-	TodayContainer
+	TodayContainer,
+	TodayText
 } from './styles';
 
-const SocialCard = ({ icon, username, number, category }) => {
+const SocialCard = ({
+	icon,
+	username,
+	number,
+	category,
+	amount,
+	border,
+	color,
+	up,
+	dark
+}) => {
 	return (
-		<StyledCard>
+		<StyledCard dark={dark} border={border}>
 			<CardSocialInfo>
-				<img src='/images/icon-facebook.svg' alt='' />
-				<p>@nathanf</p>
+				<img src={icon} alt='' />
+				<p>{username}</p>
 			</CardSocialInfo>
 			<div>
-				<CardNumber>1987</CardNumber>
-				<CardType>FOLLOWERS</CardType>
+				<CardNumber>{number}</CardNumber>
+				<CardType>{category}</CardType>
 			</div>
 			<TodayContainer>
-				<img src='/images/icon-up.svg' alt='' />
-				<p>12 today</p>
+				{up ? (
+					<img src='/images/icon-up.svg' alt='' />
+				) : (
+					<img src='/images/icon-down.svg' alt='' />
+				)}
+
+				<TodayText color={color}>{amount}</TodayText>
 			</TodayContainer>
 		</StyledCard>
 	);

@@ -1,3 +1,4 @@
+import { cardSocial } from '../../constants/cards-info';
 import {
 	StyledBall,
 	StyledHeader,
@@ -7,21 +8,33 @@ import {
 	StyledTitleMode
 } from './styles';
 
-const Header = () => {
+const Header = ({ dark, setDark }) => {
 	return (
-		<StyledHeader>
-			<StyledTitleContainer>
+		<StyledHeader dark={dark}>
+			<StyledTitleContainer dark={dark}>
 				<h1>Social Media Dashboard</h1>
-				<StyledTitleMode>Total Followers: 23,004</StyledTitleMode>
+				<StyledTitleMode dark={dark}>
+					Total Followers: {calculateFollowers()}
+				</StyledTitleMode>
 			</StyledTitleContainer>
 			<StyledModeContainer>
-				<StyledTitleMode>Dark Mode</StyledTitleMode>
+				<StyledTitleMode dark={dark}>Dark Mode</StyledTitleMode>
 				<StyledMode>
-					<StyledBall />
+					<StyledBall
+						dark={dark}
+						onClick={() => {
+							setDark(!dark);
+						}}
+					/>
 				</StyledMode>
 			</StyledModeContainer>
 		</StyledHeader>
 	);
 };
 
+const calculateFollowers = () => {
+	let total = 0;
+	cardSocial.forEach(card => (total += card.number));
+	return total;
+};
 export default Header;

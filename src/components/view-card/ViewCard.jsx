@@ -1,27 +1,27 @@
 import { StyledTitleMode } from '../header/styles';
-import { TodayContainer } from '../social-card/styles';
-import { CardPorcent, CardView, StyledView, ViewTitle } from './styles';
+import { TodayContainer, TodayText } from '../social-card/styles';
+import { CardPorcent, CardView, CardViewNumber } from './styles';
 
-const ViewCard = () => {
+const ViewCard = ({ icon, category, number, amount, color, up, dark }) => {
 	return (
-		<StyledView>
-			<ViewTitle>Overview - Today</ViewTitle>
+		<CardView dark={dark}>
 			<div>
-				<CardView>
-					<div>
-						<StyledTitleMode>Page Views</StyledTitleMode>
-						<p>87</p>
-					</div>
-					<CardPorcent>
-						<img src='/images/icon-facebook.svg' alt='' />
-						<TodayContainer>
-							<img src='/images/icon-up.svg' alt='' />
-							<p>3%</p>
-						</TodayContainer>
-					</CardPorcent>
-				</CardView>
+				<StyledTitleMode>{category}</StyledTitleMode>
+				<CardViewNumber>{number}</CardViewNumber>
 			</div>
-		</StyledView>
+			<CardPorcent>
+				<img src={icon} alt='' />
+				<TodayContainer>
+					{up ? (
+						<img src='/images/icon-up.svg' alt='' />
+					) : (
+						<img src='/images/icon-down.svg' alt='' />
+					)}
+
+					<TodayText color={color}>{amount}</TodayText>
+				</TodayContainer>
+			</CardPorcent>
+		</CardView>
 	);
 };
 
